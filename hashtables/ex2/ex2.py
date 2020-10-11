@@ -6,9 +6,12 @@ class Ticket:
 
 
 def reconstruct_trip(tickets, length):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
-
+    ticket_table = {}
+    for t in tickets:
+        ticket_table.update({t.source:t.destination})
+    d = ticket_table.get("NONE")
+    route = [d]
+    while d != "NONE":
+        d = ticket_table.get(d)
+        route.append(d)
     return route
