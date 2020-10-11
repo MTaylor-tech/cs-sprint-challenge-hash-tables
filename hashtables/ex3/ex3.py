@@ -2,9 +2,27 @@ def intersection(arrays):
     """
     YOUR CODE HERE
     """
-    # Your code here
+    l = len(arrays)
+    r = []
+    table = build_lookup_table(arrays,l)
+    for k in table.keys():
+        if table.get(k) == l:
+            r.append(k)
+    return r
 
-    return result
+
+def build_lookup_table(arrays,length):
+    table = {}
+    counter = 1
+    for arr in arrays:
+        for item in arr:
+            if counter==1:
+                table.update({item:1})
+            elif table.get(item)==counter-1:
+                table.update({item:table.get(item)+1})
+        counter += 1
+    # print(f"{table[1],table[2],table[3]}")
+    return table
 
 
 if __name__ == "__main__":
